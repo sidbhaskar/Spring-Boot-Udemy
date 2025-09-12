@@ -22,15 +22,7 @@ public class Main {
                 .buildSessionFactory();
         Session session = sessionFactory.openSession();
 
-        String brand = "Asus";
-
-        Query query = session.createQuery("select brand, model from Laptop where brand like ?1 ");
-        query.setParameter(1,brand);
-        List<Object[]> laptops = query.getResultList();
-
-//        Laptop l1 = session.find(Laptop.class,3);
-
-        System.out.println(laptops);
+        Laptop laptop = session.getReference(Laptop.class,2);
 
         session.close();
 
