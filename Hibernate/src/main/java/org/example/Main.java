@@ -7,33 +7,38 @@ import org.hibernate.cfg.Configuration;
 
 public class Main {
     public static void main(String[] args) {
-        Student s1 = new Student();
-        s1.setRollNo(3);
-        s1.setsName("harsh");
-        s1.setsAge(23);
+
+        Laptop l1 = new Laptop();
+        l1.setLid(1);
+        l1.setBrand("Asus");
+        l1.setModel("vivobook");
+        l1.setRam(16);
+
+        Alien a1 = new Alien();
+        a1.setAid(101);
+        a1.setAname("Sid");
+        a1.setTech("java");
+        a1.setLaptop(l1);
 
         SessionFactory sessionFactory = new Configuration()
-                .addAnnotatedClass(org.example.Student.class)
+                .addAnnotatedClass(org.example.Alien.class)
+                .addAnnotatedClass(org.example.Laptop.class)
                 .configure()
                 .buildSessionFactory();
         Session session = sessionFactory.openSession();
 
-        // for update
-//        Transaction transaction = session.beginTransaction();
-//        session.merge(s1);
-//        transaction.commit();
+        Transaction transaction = session.beginTransaction();
 
-        // for fetching
-//        Student s2 = session.find(Student.class, 1);
+        session.persist(l1);
+        session.persist(a1);
 
-        // for saving in db
-//        Transaction transaction = session.beginTransaction();
-//        session.persist(s1);
-//        transaction.commit();
+        transaction.commit();
+
+        Alien a2 = session.find(Alien.class, 101);
+        System.out.println(a2);
 
         session.close();
         sessionFactory.close();
 
-        System.out.println(s1);
     }
 }
