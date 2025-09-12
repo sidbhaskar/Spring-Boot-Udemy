@@ -13,7 +13,7 @@ public class Alien {
     private String aname;
     private String tech;
 
-    @OneToMany(mappedBy = "alien")
+    @ManyToMany
     private List<Laptop> laptops;
 
     public int getAid() {
