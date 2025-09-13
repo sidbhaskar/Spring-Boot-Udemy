@@ -1,4 +1,4 @@
-package com.Leaning.Movingspringboot;
+package com.Leaning.Movingspringboot.model;
 
 import org.springframework.context.annotation.Primary;
 
