@@ -17,7 +17,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productId;
+    private int id;
     private String name;
     private String description;
     private String brand;
@@ -33,7 +33,7 @@ public class Product {
     @Lob
     private byte[] imageData;
 
-//    public Product(int id){
-//        this.id = id;
-//    }
+    public Product(int id){
+        this.id = id;
+    }
 }
